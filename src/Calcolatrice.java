@@ -1,4 +1,6 @@
+import java.math.RoundingMode;
 import java.util.Vector;
+import java.math.BigDecimal;
 
 public class Calcolatrice {
     protected Vector<String> termini; //vector per contenere le operazioni e i termini
@@ -137,7 +139,8 @@ public class Calcolatrice {
 
         String op;
         int pos;
-        double ris = -1, primoTermine, secondoTermine;
+        BigDecimal ris = new BigDecimal(0), n1, n2;
+        final int round = 20;
 
         //operazioni hop
         for (char charOpPro : hop) {
@@ -147,21 +150,23 @@ public class Calcolatrice {
             //per tutte le operazioni prioritarie
             while (termini.contains(op)) {
                 pos = termini.indexOf(op);
-                primoTermine = Double.parseDouble(termini.get(pos-1));
-                secondoTermine = Double.parseDouble(termini.get(pos+1));
+                n1 = new BigDecimal(termini.get(pos-1));
+                n2 = new BigDecimal(termini.get(pos+1));
 
+                //RoundingMode.HALF_UP serve per arrotondare per eccesso in caso di numeri periodici o infiniti
+                //imposto l'arrotondamento con round
                 switch (op) {
-                    case "*": ris = primoTermine * secondoTermine; break;
-                    case "/": ris = primoTermine / secondoTermine; break;
-                    case "^": ris = Math.pow(primoTermine, secondoTermine); break;
-                    case "%": ris = primoTermine % secondoTermine; break;
+                    case "*": ris = n1.multiply(n2); break;
+                    case "/": ris = n1.divide(n2, round, RoundingMode.HALF_UP); break;
+                    case "^": ris = BigDecimal.valueOf(Math.pow(n1.doubleValue(), n2.doubleValue())).setScale(round, RoundingMode.HALF_UP); break;
+                    case "%": ris = n1.remainder(n2); break;
                 }
 
                 //rimozione dopo il calcolo
                 //rimuovo prima l'elemento di posizione successiva all'operatore (il secondo termine)
                 //per evitare problemi di posizione in termini
                 //in questo modo al posto ad es. della moltiplicazione [3, *, 2] si troverà [6]
-                termini.set(pos, ris+"");
+                termini.set(pos, ris.toPlainString());
                 termini.remove(pos+1);
                 termini.remove(pos-1);
             }
@@ -175,21 +180,24 @@ public class Calcolatrice {
             //per tutte le operazioni secondarie
             while (termini.contains(op)) {
                 pos = termini.indexOf(op);
-                primoTermine = Double.parseDouble(termini.get(pos-1));
-                secondoTermine = Double.parseDouble(termini.get(pos+1));
+                n1 = new BigDecimal(termini.get(pos-1));
+                n2 = new BigDecimal(termini.get(pos+1));
 
                 switch (op) {
-                    case "+": ris = primoTermine + secondoTermine; break;
-                    case "-": ris = primoTermine - secondoTermine; break;
+                    case "+": ris = n1.add(n2); break;
+                    case "-": ris = n1.subtract(n2); break;
                 }
 
-                termini.set(pos, ris+"");
+                termini.set(pos, ris.toPlainString());
                 termini.remove(pos+1);
                 termini.remove(pos-1);
             }
         }
 
-        return termini.getFirst();
+        ris = new BigDecimal(termini.getFirst());
+        ris = ris.stripTrailingZeros();
+
+        return ris.toPlainString();
     }
 
 } //fine classe

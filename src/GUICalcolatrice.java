@@ -145,6 +145,8 @@ public class GUICalcolatrice implements ActionListener {
                     testo = testo.replace("x", "*");
                     testo = testo.replace("÷", "/");
 
+                    testo = testo.replace(" ", "");
+
                     Calcolatrice calc = new Calcolatrice(testo);
 
                     String output = calc.risultato();
