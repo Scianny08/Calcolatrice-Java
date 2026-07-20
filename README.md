@@ -2,7 +2,7 @@
 
 Una semplice calcolatrice da scrivania sviluppata in Java con interfaccia grafica Swing. Supporta le quattro operazioni base, oltre a potenza e modulo, con un motore di calcolo scritto da zero che rispetta la precedenza degli operatori.
 
-![Screenshot della Calcolatrice](screenshot.png)
+![Screenshot della Calcolatrice](img/screenshot.png)
 
 ## Funzionalità
 
