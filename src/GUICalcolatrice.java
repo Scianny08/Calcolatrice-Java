@@ -170,7 +170,7 @@ public class GUICalcolatrice implements ActionListener {
         // 4. SCRITTURA STANDARD (Tasti numerici e operatori)
         else {
             // Se sul display c'è un errore, pulisce prima di scrivere il nuovo carattere
-            if (testo.equals("Errore")) {
+            if (testo.equals("Errore") || testo.equalsIgnoreCase("NaN") || testo.equalsIgnoreCase("Infinity")) {
                 testo = "";
             }
 
