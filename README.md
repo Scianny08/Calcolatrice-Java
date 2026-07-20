@@ -8,7 +8,7 @@ Una semplice calcolatrice da scrivania sviluppata in Java con interfaccia grafic
 
 - Operazioni supportate: `+` `-` `x` `÷` `%` `^`
 - Rispetto della precedenza degli operatori (le operazioni "hop" — moltiplicazione, divisione, modulo, potenza — vengono calcolate prima di quelle "lop" — addizione e sottrazione)
-- Supporto ai numeri decimali (con virgola `,` nell'interfaccia, convertita internamente in punto `.`)
+- Supporto ai numeri decimali
 - Validazione dell'espressione: controlla che gli operatori e i punti decimali siano posizionati correttamente prima di procedere al calcolo
 - Gestione degli errori: mostra `Errore` in caso di espressioni non valide o eccezioni (es. divisione per zero non gestita numericamente)
 - Tasti `AC` (cancella tutto) e `C` (cancella l'ultimo carattere)
@@ -45,28 +45,17 @@ Classe che costruisce l'interfaccia grafica con Swing:
 2. Compila i file:
 
    ```bash
-   javac Calcolatrice.java GUICalcolatrice.java
+   javac Calcolatrice.java GUICalcolatrice.java Main.java
    ```
 
-3. Esegui la GUI (nota: manca ancora un metodo `main` che istanzi `GUICalcolatrice`):
+3. Esegui il main:
 
    ```bash
-   java GUICalcolatrice
+   java Main
    ```
 
 ## Note e possibili miglioramenti
-
-- Il file `GUICalcolatrice.java` non contiene attualmente un metodo `main`: per avviare il programma serve aggiungere una classe di avvio, ad esempio:
-
-  ```java
-  public static void main(String[] args) {
-      new GUICalcolatrice();
-  }
-  ```
-
 - Non è presente una gestione esplicita della divisione per zero: al momento produce `Infinity`, `-Infinity` o `NaN`, che vengono comunque intercettati dalla GUI prima della scrittura successiva.
-- L'import in `GUICalcolatrice.java` contiene un refuso (`import javax.swing.BorderFactory;a`) che andrebbe corretto rimuovendo la `a` finale.
 
 ## Licenza
-
-Progetto didattico, libero da vincoli di licenza specifici salvo diversa indicazione.
+GPL-3.0
