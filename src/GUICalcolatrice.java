@@ -52,6 +52,8 @@ public class GUICalcolatrice implements ActionListener {
 
     //Costruttore
     public GUICalcolatrice(){
+        f.setTitle("Calcolatrice");
+
         // aggiungo gli elementi atomici
         txtSchermo.setOpaque(true);
         txtSchermo.setEditable(true);
