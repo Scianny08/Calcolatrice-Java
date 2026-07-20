@@ -17,9 +17,8 @@ Una semplice calcolatrice da scrivania sviluppata in Java con interfaccia grafic
 ## Struttura del progetto
 
 ```
-.
 ├── Calcolatrice.java       # Logica di calcolo (parsing e valutazione dell'espressione)
-└── GUICalcolatrice.java    # Interfaccia grafica Swing e gestione degli eventi
+├── GUICalcolatrice.java    # Interfaccia grafica Swing e gestione degli eventi
 └── Main.java               # Esecutore del programma
 ```
 
