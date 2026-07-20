@@ -100,7 +100,8 @@ public class GUICalcolatrice implements ActionListener {
         c.add(pnlSchermo, BorderLayout.CENTER);
         c.add(pnlPulsanti, BorderLayout.SOUTH);
 
-        // Collego l'action listener a tutti i bottoni
+        // Collego l'action listener
+        txtSchermo.addActionListener(this); //per pressione invio
         for (Component comp : pnlPulsanti.getComponents()) {
             if (comp instanceof JButton) {
                 ((JButton) comp).addActionListener(this);
@@ -135,7 +136,7 @@ public class GUICalcolatrice implements ActionListener {
         }
 
         // 3. GESTIONE TASTO "UGUALE" (Elaborazione del calcolo)
-        else if (sorgente.equals(btnUguale)) {
+        else if (sorgente.equals(btnUguale) || sorgente.equals(txtSchermo)) {
             // Esegue il calcolo solo se lo schermo non è vuoto o in stato di errore
             if (!testo.isEmpty() && !testo.equals("Errore")) {
 
