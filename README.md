@@ -6,7 +6,7 @@ Una semplice calcolatrice da scrivania sviluppata in Java con interfaccia grafic
 
 ## Funzionalità
 
-- Operazioni supportate: `+`, `-`, `*` (x), `/` (÷), `%`, `^`
+- Operazioni supportate: `+` `-` `x` `÷` `%` `^`
 - Rispetto della precedenza degli operatori (le operazioni "hop" — moltiplicazione, divisione, modulo, potenza — vengono calcolate prima di quelle "lop" — addizione e sottrazione)
 - Supporto ai numeri decimali (con virgola `,` nell'interfaccia, convertita internamente in punto `.`)
 - Validazione dell'espressione: controlla che gli operatori e i punti decimali siano posizionati correttamente prima di procedere al calcolo
