@@ -54,7 +54,6 @@ Classe che costruisce l'interfaccia grafica con Swing:
    ```
 
 ## Note e possibili miglioramenti
-- Non è presente una gestione esplicita della divisione per zero: al momento produce `Infinity`, `-Infinity` o `NaN`, che vengono comunque intercettati dalla GUI prima della scrittura successiva.
 - Non è ancora presente una modalità scientifica (funzioni come radice quadrata, seno, coseno, logaritmi, ecc.): è prevista come sviluppo futuro.
 
 ## Licenza
