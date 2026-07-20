@@ -1,4 +1,4 @@
-// A C ^ ÷
+//AC C ^ ÷
 // 7 8 9 +
 // 4 5 6 -
 // 1 2 3 x
@@ -10,7 +10,6 @@ import java.awt.event.*;
 import javax.swing.BorderFactory;
 
 public class GUICalcolatrice implements ActionListener {
-
     //Attributi
     JFrame f = new JFrame();
     Container c = f.getContentPane();
@@ -26,7 +25,7 @@ public class GUICalcolatrice implements ActionListener {
     //pulsanti calcolatrice
     JPanel pnlPulsanti = new JPanel(new GridLayout(5, 4, 5, 5));
 
-    JButton btnA = new JButton("A");
+    JButton btnAC = new JButton("AC");
     JButton btnC = new JButton("C");
     JButton btnPow = new JButton("^");
     JButton btnDiviso = new JButton("÷");
@@ -68,7 +67,7 @@ public class GUICalcolatrice implements ActionListener {
         pnlCalc.add(lblCalc);
 
         // Aggiungi i bottoni direttamente al pannello (l'ordine crea la griglia automatica)
-        pnlPulsanti.add(btnA);
+        pnlPulsanti.add(btnAC);
         pnlPulsanti.add(btnC);
         pnlPulsanti.add(btnPow);
         pnlPulsanti.add(btnDiviso);
@@ -123,8 +122,8 @@ public class GUICalcolatrice implements ActionListener {
         Object sorgente = e.getSource();
         String testo = txtSchermo.getText();
 
-        // 1. GESTIONE TASTO "A" (Reset)
-        if (sorgente.equals(btnA)) {
+        // 1. GESTIONE TASTO "AC" (Reset)
+        if (sorgente.equals(btnAC)) {
             txtSchermo.setText("");
         }
 
